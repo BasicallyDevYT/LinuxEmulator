@@ -1,0 +1,179 @@
+           body {
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+            background-color: rgb(37, 37, 37);
+            color: rgb(255, 255, 255); 
+           }
+            #vm {width: 700px;height: 500px;border: 3px solid white;margin: auto;overflow: hidden;display: flex;justify-content: center;align-items: center; display: none;}
+            #vm canvas {max-width: 100%;max-height: 100%;width: auto;height: auto;}
+            #vm:fullscreen {width: 100vw;height: 100vh;margin: 0;padding: 0;display: flex;justify-content: center;align-items: center;overflow: hidden;}
+            #vm:fullscreen canvas {
+                display: block;
+                margin: auto;
+            }
+            #gamediv {
+                border: 3px solid white;
+                width: 700px;height: 500px;
+            }
+            button {
+                background-color: #333;
+                color: white;
+                border: 1px solid #888;
+                padding: 6px 12px;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #444;
+            }
+            #controls {
+                display: flex;
+                justify-content: center;
+                gap: 8px;
+                margin-top: 10px;
+            }
+            #settings {
+                width: 700px;
+                margin: 20px auto;
+                padding: 20px;
+                border: 2px solid #555;
+                border-radius: 10px;
+                background-color: #1b1b1b;
+                text-align: center;
+            }
+
+            #settings form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .vram-row {
+                display: flex;
+                align-items: center;
+            }
+
+            select {
+                background-color: #333;
+                color: white;
+                border: 1px solid #888;
+                padding: 6px 12px;
+                cursor: pointer;
+            }
+            input[type="range"] {
+                appearance: none;
+                height: 8px;
+                border-radius: 10px;
+                border: 1px solid #ffffff;
+                background: #222;
+                outline: none;
+                cursor: pointer;
+            }
+
+            input[type="range"]::-webkit-slider-thumb {
+                appearance: none;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: #4da6ff;
+                cursor: pointer;
+                border: 2px solid white;
+            }
+
+            input[type="range"]::-moz-range-thumb {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: #4da6ff;
+                cursor: pointer;
+                border: 2px solid white;
+            }
+
+            input[type="range"]:hover::-webkit-slider-thumb {
+                background: #70b8ff;
+            }
+
+            input[type="range"]:hover::-moz-range-thumb {
+                background: #70b8ff;
+            }
+            #notifications {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                z-index: 9999;
+            }
+
+            .notification {
+                width: 350px;
+                padding: 16px 45px 16px 18px;
+                position: relative;
+                box-sizing: border-box;
+
+                background: #1f8f4c;
+                color: white;
+                border-radius: 8px;
+
+                opacity: 0;
+                transform: translateX(30px);
+                transition: 0.25s ease;
+            }
+
+            .notification.show {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .notification-close {
+                position: absolute;
+                top: 50%;
+                right: 14px;
+                transform: translateY(-50%);
+
+                border: none;
+                background: transparent;
+                color: white;
+                font-size: 20px;
+                cursor: pointer;
+            }
+            #link {
+                color: rgb(0, 100, 255)
+            }
+            #email {
+                color: rgb(0, 50, 255)
+            }
+            #button {
+                background-color: rgb(37, 37, 37); color: rgb(255, 255, 255); display: flex;
+            }
+            #divbutton {
+                display: flex;
+                justify-content: center;
+                gap: 8px;
+                margin-top: 10px;
+            }
+            #desclink {
+                color: rgb(255, 255, 255);
+            }
+            #popular {
+                background-color: rgb(112, 112, 112);
+            }
+            #desc {
+                text-align: center;
+            }
+            #vmdiv {
+                white-space: pre; font: 14px monospace; line-height: 14px
+            }
+            #statustext {
+                width: 250; height: 250; background-color: rgb(0, 0, 0);
+            }
+            #statebutton {
+                background-color: rgb(37, 37, 37); color: rgb(255, 255, 255); display: flex;
+            }
+            #fullscreenbutton {
+                background-color: rgb(37, 37, 37); color: rgb(255, 255, 255); display: flex;
+            }
+            #title {
+                text-align: center;
+            }
+            #SettingsLabel {
+                text-align: center;
+            }
