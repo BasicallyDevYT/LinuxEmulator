@@ -423,6 +423,8 @@ async function StartConsole(id, threads) {
     const script = document.createElement("script");
     script.src = "https://cdn.emulatorjs.org/stable/data/loader.js";
     document.body.appendChild(script);
+
+    Notify("Did you know that you can use the Left mouse button to trigger the A button?")
 }
 
 async function test() {
@@ -879,4 +881,3 @@ setInterval(() => {
         }
     }
 }, 20);
-
