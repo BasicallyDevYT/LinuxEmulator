@@ -664,7 +664,7 @@ function WhichToStart(){
     const LocalStorageAccepted = JSON.parse(localStorage.getItem("LocalStorageAccepted")) ?? '';
 
     if (!Boolean(LocalStorageAccepted)) {
-        const accepted = confirm('Before using Virtual Machines, You need to accept the use of Local Storage. Press "OK" to continue')
+        const accepted = confirm('To use this feature, You need to accept the use of Local Storage. Press "OK" to continue')
         if (!accepted) {return} else {localStorage.setItem("LocalStorageAccepted", JSON.stringify(true));} 
     }    
     
