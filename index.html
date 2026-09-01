@@ -125,21 +125,6 @@
 
         <script src="coi-serviceworker.js"></script>
         <script src="build/libv86.js"></script>
-        <script type="text/javascript">
-            var Module = {
-                // Point directly to your canvas element in index.html
-                canvas: document.getElementById('vmcanvas'),
-                
-                // Redirect stdout/stderr to the browser console cleanly
-                // print: function(text) { console.log(text); },
-                // printErr: function(text) { console.error(text); },
-                
-                // Optional: override total memory or locate files if needed
-                locateFile: function(path, scriptDirectory) {
-                    return scriptDirectory + path;
-                }
-            };
-        </script>
         <script src="index.js"></script>
     </body>
 </html>
