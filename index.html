@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Linux emulator - BETA BUILD</title>
+        <link rel="icon" href="websitelogo.png" type="image/x-icon">
+        <meta name="Description" content="This website lets you emulate Tiny core linux in your Browser without Cloud servers using v86 and WebAssembly">
+        <meta name="keywords" content="Emulation, Linux">
+        <meta name="author" content="Basically_Dev">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="charset" content="UTF-8">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div id="notifications"></div>
+        <div>
+            <h1 id="title">Linux Emulator - BETA BUILD</h1>
+        </div>
+        <p id="desc">This website lets you emulate <a id="desclink" href="http://www.tinycorelinux.net/">Tiny core linux</a> in your <span id="popular"><b>Browser</b></span> without <span id="popular"><b>Cloud servers</b></span> using <a id="desclink" href="https://github.com/copy/v86">v86</a> and <a id="desclink" href="https://en.wikipedia.org/wiki/WebAssembly">WebAssembly</a></p>
+        <h2 id="SettingsLabel">Settings</h2>
+        <div id="settings">
+            <form>
+                <div id="settingsliders">
+                    <div class="ram-row">
+                        <label for="Ram" id="RamLabel">Ram (1.00 GB):</label>
+                        <input id="Ram" type="range" max="2048" min="512" value="1024">
+                    </div>
+                    <br>
+                    <div class="vram-row">
+                        <label for="VRam" id="VRamLabel">VRam (64 MB):</label>
+                        <input id="VRam" type="range" max="128" min="16" value="64">
+                    </div>
+                    <br>
+                </div>
+
+                <div id="Warning"><p>Please use the EmulatorJS Settings.</p></div>
+                
+                <div id="Error"><p>You cannot change settings when using cloud services.</p></div>
+
+                <div id="PSPNotice"><p>For better performance, you can use the <a target="_blank" id="psplink" href="https://root-hunter.github.io/ppsspp-web/">PPSSPP WASM Website</a>.</p></div>
+
+                <select id="OperatingSystemSelector">
+                    <option value="linux.iso" selected disabled>Default (Tiny core GUI) (27 MB) </option>
+                    <option value="corelinux.iso">Tiny core CLI (20 MB)</option>
+                    <option value="linux.iso">Tiny core GUI (27 MB)</option>
+                    <option value="alphinevirtual.iso">Alpine linux Virtual Edition (49 MB)</option>
+                    <option value="dsl.iso">Damn Small Linux (53 MB)</option>
+                    <option value="flinux.iso">FLinux GUI (137 MB)</option>
+                    <option value="alphine.iso">Alpine linux Standard Edition (279 MB)</option>
+                    <option value="vanilladpup.iso">Vanilla DPup (301 MB)</option>
+                    <option value="slax.iso">Slax Debian (416 MB)</option>
+                    <option value="debian5.iso">Debian 5 XFCE (515 MB)</option>
+                    <option value="bookwormpup.iso">Puppy Linux Bookworm GUI (639 MB)</option>
+                    <option value="ubuntu4.iso">Ubuntu 4 (643 MB)</option>
+                    <option value="mint4.iso">Linux Mint 4 (689 MB)</option>
+                    <option value="mint4.iso">Linux Mint 3.1 (691 MB)</option>
+                    <option value="ubuntu6.iso">Ubuntu 6 (698 MB)</option>
+                    <option value="ubuntu8.iso">Ubuntu 8 (699 MB)</option>
+                    <option value="debian7.iso">Debian 7 XFCE (1.01 GB)</option>
+                    <option value="voidbase.iso">Void Linux Base (1.02 GB)</option>
+                    <option value="voidxfce.iso">Void Linux XFCE (1.4 GB)</option>
+                    <option value="debian9.iso">Debian 9 XFCE (1.8 GB)</option>
+                    <option disabled>Windows</option>
+                    <option value="floppywindows1.img">Windows 1.0</option>
+                    <option value="harddiskwindows2.img">Windows 2.0</option>
+                    <option value="harddiskwindows31.img">Windows 3.1</option>
+                    <option disabled>Other Operating Systems</option>
+                    <option value="kolibri.iso">Kolibri OS (98 MB)</option>
+                    <option disabled>Geometry Dash</option>
+                    <option value="nes.famidash.nes">Famidash</option>
+                    <option value="nes.famidashB.nes">Famidash B Side</option>
+                    <option value="nes.famidashC.nes">Famidash C Side</option>
+                    <option value="nes.famidashD.nes">Famidash D Side</option>
+                    <option value="gba.gd.gba">Geometry Dash Gameboy Advance</option>
+                    <option value="psp.gd.iso">Geometry Dash PSP</option>
+                </select>
+            </form>
+        </div>
+        <div id="divbutton">
+            <!--<button id="button" onclick="PrepareToStartLinux()">Startup VM</button>-->
+            <button id="button" onclick="WhichToStart()">Startup VM</button>
+            <button onclick="downloadFromUrl()" >Download selected File</button>
+        </div>
+        <div id="controls">
+            <button onclick="EnterFullscreen()" id="fullscreenbutton">Enter Fullscreen</button> 
+            <select id="StateSelector">
+                <option value="nonselected" selected disabled>Select option</option>
+                <option value="load">Load State</option>
+                <option value="save">Save State</option>
+                <option value="delete">Delete State</option>
+            </select>
+            <button onclick="RunStateCheck()" id="statebutton">Run selected state action</button>
+        </div>
+        <p id="statustext">Download not started.</p>
+        <hr>
+        <div id="vm">
+            <div id="vmdiv"></div>
+            <canvas id="vmcanvas"></canvas>
+        </div>
+        <div id="gamediv" style="width: 100%; height: 600px;">
+            <div id="game"></div>
+            <canvas id="gamecanvas"></canvas>
+        </div>
+        <hr id="hehe">
+            <div class="dangerzone">
+                    <h1 id="danger">DANGER ZONE</h1>
+                    <div id="dangerbuttondiv">
+                        <button id="dangerbutton"onclick="ClearCookies()">Clear Information</button>
+                    </div>
+            </div>
+        <hr id="hehe">
+        <p>Links:</p> 
+        <a id="link" href="http://www.tinycorelinux.net/" target="_self">Tiny core</a>
+        <br>
+        <a id="link" href="https://github.com/copy/v86" target="_self">v86 Github repository</a>
+        <br>
+        <a id="email" href="mailto:basically_dev@outlook.com" title="basically_dev@outlook.com">Email me</a>
+
+        <script src="coi-serviceworker.js"></script>
+        <script src="build/libv86.js"></script>
+        <script type="text/javascript">
+            var Module = {
+                // Point directly to your canvas element in index.html
+                canvas: document.getElementById('vmcanvas'),
+                
+                // Redirect stdout/stderr to the browser console cleanly
+                // print: function(text) { console.log(text); },
+                // printErr: function(text) { console.error(text); },
+                
+                // Optional: override total memory or locate files if needed
+                locateFile: function(path, scriptDirectory) {
+                    return scriptDirectory + path;
+                }
+            };
+        </script>
+        <script src="index.js"></script>
+    </body>
+</html>
